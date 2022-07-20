@@ -12,7 +12,9 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
 app.get('/', (req,res) =>{
-    res.json({message: process.env.VARIAVEL_AMBIENTE})
+
+    const testando = process.env.VARIAVEL_AMBIENTE || 'não tem'
+    res.json({message: testando})
 })
 
 app.post('/postHeroku',(req, res) =>{
