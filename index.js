@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 
@@ -11,7 +12,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
 app.get('/', (req,res) =>{
-    res.json({message: 'Método'})
+    res.json({message: process.env.VARIAVEL_AMBIENTE})
 })
 
 app.post('/postHeroku',(req, res) =>{
