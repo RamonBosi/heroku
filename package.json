@@ -4,8 +4,8 @@
   "description": "Realizando teste na plataforma heroku",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js",
-    "dev": "nodemon ./index.js localhost 3000"
+    "start": "node ./Loja/index.js",
+    "dev": "nodemon ./Loja/index.js localhost 3000"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,8 @@
   "homepage": "https://github.com/RamonBosi/heroku#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "pg": "^8.7.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.19",

@@ -1,4 +1,3 @@
-// require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 
@@ -13,7 +12,7 @@ app.use(express.json())
 
 app.get('/', (req,res) =>{
 
-    const testando = process.env.VARIAVEL_AMBIENTE || 'não tem'
+    const testando = 'testando'
     res.json({message: testando})
 })
 
