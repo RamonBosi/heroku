@@ -34,6 +34,17 @@ const controllerEndereco = {
             res.json(serverResponse('Preencha todos os campos',true))
         }
     },
+    async pegarEnderecos(req,res){
+        const { idUsuario, idEndereco } = req.params
+
+        const enderecos = await selecionarDado(idUsuario,idEndereco)
+
+        if(enderecos.error){
+            res.json(serverResponse('Algo deu errado, tente mais tarde',true))
+        }else{
+            res.json(serverResponse(enderecos.rows))
+        }
+    },
     async updateEndereco(req,res){
 
         const reqData = req.body
