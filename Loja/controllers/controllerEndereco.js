@@ -34,7 +34,7 @@ const controllerEndereco = {
             res.json(serverResponse('Preencha todos os campos',true))
         }
     },
-    async pegarEnderecos(req,res){
+    async pegarEndereco(req,res){
         const { idUsuario, idEndereco } = req.params
 
         const enderecos = await selecionarDado(idUsuario,idEndereco)

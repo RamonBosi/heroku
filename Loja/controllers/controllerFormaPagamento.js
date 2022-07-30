@@ -1,6 +1,19 @@
 const db = require('../database')
 const { naoExisteValoresVazios, serverResponse } = require('../Funcs')
 
+async function selecionarDado(idUsuario, idFormaPagamento){
+
+    const sql = `SELECT * FROM formas_pagamentos WHERE usuario_id = $1 AND id = $2`
+    const data = [idUsuario, idFormaPagamento]
+
+    const formaPagamento = await db.query(sql, data)
+    .then((resDb) => {return {error: false, rows: resDb.rows[0] || null }})
+    .catch(() => {return {error: true}})
+
+    return formaPagamento
+
+}
+
 const controllerFormaPagamento = {
     createFormaPagamento(req,res){
 
@@ -21,6 +34,18 @@ const controllerFormaPagamento = {
         }else{
             res.json(serverResponse('Preencha todos os campos',true))
         }
+    },
+    async pegarFormaPagamento(req,res){
+        const { idUsuario,idFormaPagamento } = req.params    
+    
+        const formaPagamento = await selecionarDado(idUsuario,idFormaPagamento)
+
+        if(formaPagamento.error){
+            res.json(serverResponse('Algo deu errado, tente mais tarde',true))
+        }else{
+            res.json(serverResponse(formaPagamento.rows))
+        }
+
     },
     async updateFormaPagamento(req,res){
 
