@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./Loja/index.js",
-    "dev": "nodemon ./Loja/index.js localhost 3000"
+    "dev": "nodemon ./Loja/index.js localhost 3100"
   },
   "repository": {
     "type": "git",

@@ -157,6 +157,18 @@ const controllerUsuario = {
             res.json(serverResponse('Ocorreu algum erro na coleta dos dados, tente mais tarde',true))
         }
     },
+    async dadosUsuario(req,res){
+        const { idUsuario } = req.params
+
+        const userData = await selecionarDado('usuarios', idUsuario)
+
+        if(userData.error){
+            res.json(serverResponse('Algo deu errado, tente mais tarde',true))
+        }else{
+            res.json(serverResponse(userData.rows))
+        }
+
+    },
     loginUsuario(req,res){
 
         const { email, senha } = req.body

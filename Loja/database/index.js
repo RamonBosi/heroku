@@ -6,7 +6,7 @@ const database = new Pool({
     user: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE,
-    ssl: { rejectUnauthorized: process.env.DATABASE_REJECT_UNAUTHORIZED}
+    // ssl: { rejectUnauthorized: process.env.DATABASE_REJECT_UNAUTHORIZED}
 })
 
 module.exports = database

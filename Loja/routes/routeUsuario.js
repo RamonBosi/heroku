@@ -5,6 +5,7 @@ const {
     deleteUsuario, 
     updateUsuario, 
     pegarDadosUsuario, 
+    dadosUsuario,
     loginUsuario,
     logoutUsuario 
 } = require('../controllers/controllerUsuario')
@@ -14,6 +15,7 @@ routes.post('/cadastrar', createUsuario)
 routes.post('/login', loginUsuario)
 
 routes.put('/:idUsuario/logout', estaAutenticado, logoutUsuario)
+routes.get('/:idUsuario/dadosUsuario',estaAutenticado, dadosUsuario)
 routes.get('/:idUsuario/pegarDados',estaAutenticado, pegarDadosUsuario)
 routes.delete('/:idUsuario/deletar', estaAutenticado, deleteUsuario)
 routes.put('/:idUsuario/atualizar', estaAutenticado, updateUsuario)
