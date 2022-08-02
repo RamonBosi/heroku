@@ -190,7 +190,10 @@ const controllerUsuario = {
                     const auth = `UPDATE usuarios SET ativo = true WHERE id = $1`
 
                     db.query(auth, [idUsuario])
-                    .then(() => res.json(serverResponse('Usuário logado')))
+                    .then(() => res.json(serverResponse({
+                        message:'Usuário logado',
+                        idUsuario
+                    })))
                     .catch(() =>{
                         res.json(serverResponse('Algo deu errado no processo de login, tente novamente mais tarde',true))
                     })
