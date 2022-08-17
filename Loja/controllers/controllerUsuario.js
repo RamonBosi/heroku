@@ -41,16 +41,36 @@ async function selecionarDado(table, id){
     return data
 }
 
-async function verificarEmailCpf(email, cpf){
+async function verificarEmailCpf(email, cpf, action){
 
     const sql = 'SELECT email,cpf FROM usuarios WHERE email = $1 OR cpf = $2'
     const dataSql = [email, cpf]
 
     const data = await db.query(sql,dataSql)
-    .then((emailCpf) => emailCpf.rows)
-    .catch(() => ['error'])
+    .then((emailCpf) => {
+        const dataDb = emailCpf.rows
 
-    return data.length ? true : false
+        //return = Existe email ou cpf ? true || false
+        if(action === 'create'){
+
+            if(dataDb.length === 0){
+                return false
+            }else{
+                return true
+            }
+        }else{
+
+            //update
+            if(dataDb.length === 1){
+                return false
+            }else{
+                return true
+            }
+        }
+    })
+    .catch(() => true)
+
+    return data
 }
 
 const controllerUsuario = {
@@ -60,7 +80,7 @@ const controllerUsuario = {
     
         if(naoExisteValoresVazios(nome,cpf,email,senha)){
 
-            const existeEmailCpf = await verificarEmailCpf(email, cpf)
+            const existeEmailCpf = await verificarEmailCpf(email, cpf, 'create')
 
             if(existeEmailCpf){
                 res.json(serverResponse('Esse email ou cpf já estão sendo usados, escolha outros',true))
@@ -81,7 +101,7 @@ const controllerUsuario = {
     async updateUsuario(req, res){
         const reqData = req.body
         
-        const existeEmailCpf = await verificarEmailCpf(reqData.email,reqData.cpf)
+        const existeEmailCpf = await verificarEmailCpf(reqData.email,reqData.cpf, 'update')
 
         if(existeEmailCpf){
             res.json(serverResponse('Esse email ou cpf já estão sendo usados, escolha outros', true))
