@@ -1,5 +1,5 @@
 if(!process.env.PRODUCTION_ENVIRONMENT){
-    require('dotenv').config({path: './Loja/.env'})
+    require('dotenv').config({path: './InformacoesEntrega/.env'})
 }
 
 const express = require('express')

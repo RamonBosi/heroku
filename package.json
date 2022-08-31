@@ -1,11 +1,11 @@
 {
-  "name": "heroku",
+  "name": "informacoes-entrega",
   "version": "1.0.0",
-  "description": "Realizando teste na plataforma heroku",
+  "description": "Servidor do projeto informações de entrega",
   "main": "index.js",
   "scripts": {
-    "start": "node ./Loja/index.js",
-    "dev": "nodemon ./Loja/index.js localhost 3100"
+    "start": "node ./InformacoesEntrega/index.js",
+    "dev": "nodemon ./InformacoesEntrega/index.js localhost 3100"
   },
   "repository": {
     "type": "git",
