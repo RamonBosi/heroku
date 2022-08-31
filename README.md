@@ -1,2 +1,3 @@
 # Servidor do projeto ``Informações de entrega``
-Servidor feito com NodeJS com Express e banco de dados PostgreSQL utilizando o drive `pg`
+Utilizei NodeJS com Express para criar o servidor. 
+Banco de dados utilizado foi o PostgreSQL com o drive `pg`.
