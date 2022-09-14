@@ -23,4 +23,6 @@ app.use('/formaPagamento', rotaFormaPagamento)
 app.use('/endereco', rotaEndereco)
 app.use('/usuario', rotaUsuario)
 
-app.listen(port)
+app.listen(port,()=>{
+  console.log(`Servidor rodando na porta ${port}`)
+})
